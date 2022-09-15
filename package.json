@@ -1,0 +1,22 @@
+{
+  "name": "websocketnode",
+  "version": "1.0.0",
+  "description": "websocket by nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samkallon/websocketNode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samkallon/websocketNode/issues"
+  },
+  "homepage": "https://github.com/samkallon/websocketNode#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
