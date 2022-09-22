@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/samkallon/websocketNode#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "ws": "^8.8.1"
   }
 }
