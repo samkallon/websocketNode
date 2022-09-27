@@ -4,6 +4,7 @@
   "description": "websocket by nodejs",
   "main": "index.js",
   "scripts": {
+    "dev": "NODE_OPTIONS='--inspect'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

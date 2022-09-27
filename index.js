@@ -1,23 +1,6 @@
+const webSocketUtils = require('./src/websocket')
+
 const ws  = require('ws')
-const express = require('express')
-
-// 初始化express实例
-const app = express()
-
-// 设置public文件夹为静态文件存放文件夹
-app.use('public',express.static('public'))
-
-app.get('/', (req,res) => {
-  res.send('Hello World!')
-})
-
-
-// const server = app.listen(8089,()=>{
-//   const host = server.address().address
-//   const port = server.address().port
-//   console.log("Node.JS 服务器已启动，访问地址： http://%s:%s", host, port)
-// })
-
 
 // 创建一个 WebSocket 服务器，监听的是 30002 端口
 const webSocketServer = new ws.Server({
@@ -26,20 +9,22 @@ const webSocketServer = new ws.Server({
 
 // 监听的是 WebSocket 服务开始监听的事件
 webSocketServer.on('listening', (socket) => {
-  console.log('web socket begins listening');
+  console.log('开始监听websocket服务');
 });
 
 // 监听的是 WebSocket 服务被客户端连接上的事件
-webSocketServer.on('connection', (socket, req) => {
-
+webSocketServer.on('connection', (socket) => {
   // 监听的是 服务端收到了客户端发来的消息 事件
   socket.on('message', (data) => {
-    console.log(data);
+    data = data.toString()
+    console.log('接收到消息',data);
     if (data === 'terminate') {
       socket.close();
       setTimeout(() => {
         webSocketServer.close();
       }, 3000);
+    }else{
+      socket.send('hi');
     }
   });
 
@@ -55,7 +40,4 @@ webSocketServer.on('connection', (socket, req) => {
     console.log(error);
   });
 
-  const ip = req.connection.remoteAddress;
-  console.log(ip + ' is connected');
-  socket.send('hi');
 });
